@@ -1,61 +1,17 @@
 module.exports = {
-  base: '/vuepress-template/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  base: '/source-code-analysis/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   locales: {
-    // 键名是该语言所属的子路径
-    // 作为特例，默认语言可以使用 '/' 作为其路径。
     '/': {
-      lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
-      title: 'VuePress Template',
-      description: 'VuePress template, theme, and plugin Demo. The purpose is that users can directly clone this repository as a startup project for initializing a VuePress website, and then add custom configurations and functions based on this project.'
-    },
-    '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress模板',
-      description: 'VuePress模板，主题，插件演示。展示了一个简单的VuePress案例模板，用户可以直接clone这个仓库，作为初始化一个VuePress网站启动项目，在这个项目的基础上新增自定义配置和功能。'
+      title: '秋染蒹葭',
+      description: '源码分享'
     }
   },
-  plugins: [
-    '@vuepress/back-to-top',
-    ['qrcode',{
-      // "/" and "/zh/" correspond to the path set by locales
-        labelText: {
-          "/": "QRCode", 
-          "/zh/": "二维码",
-        },
-        size:'small',
-        channel:true
-    }]
-  ],
   themeConfig: {
-
+    // displayAllHeaders: true, // 默认值：false
+    // sidebar: 'auto',
     locales: {
       '/': {
-        selectText: 'Languages',
-        label: 'English',
-        ariaLabel: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
-        serviceWorker: {
-          updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
-          }
-        },
-        algolia: {},
-        nav: [
-          { text: 'Guide', link: '/guide/', ariaLabel: 'Guide' },
-          { text: 'Study', link: 'https://lwebapp.com', ariaLabel: 'Study' },
-					{ text: 'Github', link: 'https://github.com/openHacking/vuepress-template' }
-        ],
-        sidebar: {
-          '/guide/': [
-            '',
-            'theme',
-            'plugin'
-          ],
-          '/resource/': [],
-        }
-      },
-      '/zh/': {
         // 多语言下拉菜单的标题
         selectText: '选择语言',
         // 该语言在下拉菜单中的标签
@@ -72,20 +28,59 @@ module.exports = {
         // 当前 locale 的 algolia docsearch 选项
         algolia: {},
         nav: [
-          { text: '指南', link: '/zh/guide/', ariaLabel: '指南' },
-          { text: '学习', link: 'https://lwebapp.com', ariaLabel: '学习' },
-					{ text: 'Github', link: 'https://github.com/openHacking/vuepress-template' }
+          // { text: '指南', link: '/guide/', ariaLabel: '指南' },
+          { text: '源码学习', link: '/react/', ariaLabel: 'react' },
+          { text: '博客', link: 'https://zhyjor.com', ariaLabel: '学习' },
+          { text: 'Github', link: 'https://github.com/zhyjor/source-code-analysis' }
         ],
-        sidebar: {
-          '/zh/guide/': [
-            '',
-            'theme',
-            'plugin'
-          ],
-          '/zh/resource/': [],
-        }
+        sidebar: [
+          {
+            title: 'React源码',   // 必要的
+            path: '/react/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            collapsable: true, // 可选的, 默认值是 true,
+            sidebarDepth: 1,    // 可选的, 默认值是 1
+            children: [
+              {
+                title: 'plugin',   // 必要的
+                path: '/react/plugin',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                collapsable: false, // 可选的, 默认值是 true,
+                sidebarDepth: 2,    // 可选的, 默认值是 1
+                children: ['plugin']
+              },
+              {
+                title: 'theme',   // 必要的
+                path: '/react/theme',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                collapsable: false, // 可选的, 默认值是 true,
+                sidebarDepth: 2,    // 可选的, 默认值是 1
+                children: ['theme']
+              },
+            ]
+          },
+          {
+            title: 'Vue源码',   // 必要的
+            path: '/vue/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+            collapsable: true, // 可选的, 默认值是 true,
+            sidebarDepth: 1,    // 可选的, 默认值是 1
+            children: [
+              {
+                title: 'plugin',   // 必要的
+                path: '/vue/plugin',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                collapsable: false, // 可选的, 默认值是 true,
+                sidebarDepth: 2,    // 可选的, 默认值是 1
+                children: ['plugin']
+              },
+              {
+                title: 'theme',   // 必要的
+                path: '/vue/theme',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                collapsable: false, // 可选的, 默认值是 true,
+                sidebarDepth: 2,    // 可选的, 默认值是 1
+                children: ['theme']
+              },
+            ]
+          },
+        ]
       }
     }
   },
-  
+
 }
